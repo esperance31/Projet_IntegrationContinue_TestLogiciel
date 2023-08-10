@@ -1,6 +1,6 @@
 import sqlite3
 import verifier
-import re
+
 
 # Création de la table des utilisateurs dans la base de données
 def create_table_utilisateurs():
@@ -29,9 +29,16 @@ def enregistrement_utilisateurs(nom_utilisateur, email, password, numero):
 
     # Crypter le mot de passe avant de le stocker
     #hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
+    
+    check_mdp = verifier.check_mdp(password)
+    check_email = verifier.check_email(email)
+    check_numero = verifier.check_number (numero)
     # Insérer l'utilisateur dans la base de données
-    c.execute("INSERT INTO utilisateur (nom_utilisateur, email, password, numero) VALUES (?, ?, ?, ?)",
-              (nom_utilisateur, email, password, numero))
-    conn.commit()
-    conn.close()
+    if check_mdp == True and check_email == True and check_numero == True :
+        c.execute("INSERT INTO utilisateur (nom_utilisateur, email, password, numero) VALUES (?, ?, ?, ?)",
+                (nom_utilisateur, email, password, numero))
+        conn.commit()
+        conn.close()
+        return True
+    else :
+        print("Le mot de passe est faible, Entrer un mot de passe contenant au moins une lettre majuscule, minuscule et un chiffre")
