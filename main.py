@@ -62,5 +62,28 @@ elif choix == 2 :
                 
         elif tache == 2 :
             grille_tarifaire.grille_tarifaire()
+            
+            
+        elif tache == 3 :
+            payements.create_table_payements()
+            print("Entrez les informations relatives au payement :")
+            nom_client = input("Nom d'utilisateur : ")
+            id_colis = input("Entrer l'identifiant du colis : ")
+            code_transaction = input("Entrer le code de la transaction Orange ou Moov Money : ")
+            payements.enregistrement_payement(nom_client, id_colis, code_transaction)
+            
+        elif tache == 4 :
+            liste_utilisateurs.liste_utilisateur()
+            
+        elif tache == 5 :
+            liste_colis.liste_colis()
+            
+        elif tache == 6 :
+            print("Ici vous pouvez voir le prix de notre livraison en renseignant le poids et la distance à faire")
+            poids = int(input("Poids en kg : "))
+            dist = int(input("Distance à parcourir : "))
+            grille_tarifaire.devis(poids, dist)
+            
+            
     
 

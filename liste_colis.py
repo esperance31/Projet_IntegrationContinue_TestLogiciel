@@ -15,8 +15,8 @@ def liste_colis( ):
         print(f"Nom du client : {coli[1]}")
         print(f"Adresse  : {coli[2]}")
         print(f"Poids du colis  : {coli[3]}")
-        print(f"Numero : {coli[5]}")
-        print(f"Commentaire  : {coli[6]}")
+        print(f"Numero : {coli[4]}")
+        print(f"Commentaire  : {coli[5]}")
         print()
 
     conn.close()
